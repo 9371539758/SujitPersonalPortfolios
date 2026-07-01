@@ -48,7 +48,7 @@ export const Header: React.FC = () => {
     <>
       <header className="app-header">
         <a href="#" className="header-logo" onClick={(e) => handleScrollTo(e, 'hero')}>
-          <span>WHY RAMACHANDRAN</span>
+          <span>WHY SUJIT</span>
         </a>
 
         <nav className="header-nav">

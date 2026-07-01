@@ -103,7 +103,7 @@ export const About: React.FC = () => {
               backgroundPosition: 'center',
             }}
           />
-          Ram 
+          Sujit
           <span className="inline-icon-wrapper" style={{ border: '2px solid var(--text-color)' }}>
             {/* Peace Sign emoji or SVG */}
             <span style={{ fontSize: '1.6rem', lineHeight: 1 }}>✌️</span>

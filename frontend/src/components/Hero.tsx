@@ -105,7 +105,7 @@ export const Hero: React.FC = () => {
 
         {/* Line 3: DESIGNER with Inline hands image and finder-like icon */}
         <h1 className="line-designer" ref={designerRef}>
-          DESIGNER
+          DEVELOPER
           
           {/* USER IMAGE PLACEHOLDER FOR THE LETTER 'I' OVERLAY / FLOATING ELEMENT */}
           {/* Note: The user can add their image as a background in src/styles/Hero.scss under `.line-designer` or replace the inline style below */}
@@ -121,7 +121,7 @@ export const Hero: React.FC = () => {
               backgroundColor: '#ffd6b3',
               border: '2px solid var(--text-color)',
               // Once you have the image in assets folder:
-              // backgroundImage: `url('/src/assets/designer-i-inset.png')`,
+              backgroundImage: `url('/src/assets/hero2.jpg')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
