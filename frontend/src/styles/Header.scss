@@ -1,0 +1,239 @@
+@import './variables.scss';
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  z-index: 100;
+  background-color: rgba(247, 244, 237, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+
+  @include tablet {
+    padding: 0 2rem;
+    height: 70px;
+  }
+
+  @include mobile {
+    padding: 0 1rem;
+  }
+}
+
+[data-theme="dark"] .app-header {
+  background-color: rgba(11, 13, 16, 0.8);
+}
+
+.header-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+
+  span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover span {
+    transform: translateY(-100%);
+  }
+
+  &::after {
+    content: "SUJIT GORE";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover::after {
+    transform: translateY(-100%);
+  }
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+
+  @include tablet {
+    display: none; // Hide on mobile, show mobile menu
+  }
+
+  .nav-link {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.65;
+    transition: var(--transition-smooth);
+    position: relative;
+    padding: 0.25rem 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: var(--accent-color);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    &:hover {
+      opacity: 1;
+      &::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  .linkedin-link {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-color);
+    letter-spacing: 0.05em;
+    border-bottom: 1.5px solid var(--text-color);
+    padding-bottom: 2px;
+    transition: var(--transition-smooth);
+    
+    &:hover {
+      color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+}
+
+// Theme Toggle Switch Style
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 26px;
+  border-radius: 20px;
+  background-color: var(--toggle-bg);
+  border: 1px solid var(--border-color);
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+
+  .toggle-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    position: absolute;
+    left: 4px;
+    top: 3px;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-color);
+  }
+
+  &.dark .toggle-thumb {
+    transform: translateX(20px);
+  }
+}
+
+// Mobile Menu Button (Hamburger)
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 110;
+
+  @include tablet {
+    display: flex;
+  }
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: var(--transition-smooth);
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}
+
+// Mobile Menu Overlay
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transform: translateY(-100%);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+
+  &.open {
+    transform: translateY(0);
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-color);
+    transition: var(--transition-smooth);
+
+    &:hover {
+      color: var(--accent-color);
+      transform: scale(1.1);
+    }
+  }
+}

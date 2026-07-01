@@ -1,0 +1,224 @@
+@import './variables.scss';
+
+.about-section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+// Text grid bio block
+.about-bio-container {
+  max-width: 1100px;
+  margin-bottom: 5rem;
+  
+  .bio-text {
+    font-size: 3.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+
+    @include mobile {
+      font-size: 1.8rem;
+    }
+
+    // Inline elements: Avatar photo frame
+    .inline-avatar {
+      display: inline-flex;
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      background-color: #fce883; // Yellow fill
+      border: 2px solid var(--text-color);
+      overflow: hidden;
+      vertical-align: middle;
+      margin: 0 10px;
+      position: relative;
+
+      @include tablet {
+        width: 50px;
+        height: 50px;
+      }
+      @include mobile {
+        width: 38px;
+        height: 38px;
+        margin: 0 5px;
+      }
+
+      &::after {
+        content: "Avatar";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: #111;
+      }
+    }
+
+    // Inline elements: Years pill
+    .inline-years {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.2rem 1.4rem;
+      border-radius: 50px;
+      border: 2.5px solid var(--text-color);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 2.4rem;
+      vertical-align: middle;
+      margin: 0 10px;
+
+      @include tablet {
+        font-size: 1.8rem;
+        padding: 0.1rem 1rem;
+      }
+      @include mobile {
+        font-size: 1.2rem;
+        padding: 0 0.6rem;
+        margin: 0 4px;
+        border-width: 1.5px;
+      }
+    }
+
+    // Inline elements: Floating Vector icons
+    .inline-icon-wrapper {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      background-color: var(--toggle-bg);
+      vertical-align: middle;
+      margin: 0 8px;
+      transition: var(--transition-smooth);
+      color: var(--accent-color);
+
+      &:hover {
+        transform: scale(1.15) rotate(15deg);
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px rgba(255, 77, 0, 0.15);
+      }
+
+      @include tablet {
+        width: 42px;
+        height: 42px;
+      }
+      @include mobile {
+        width: 30px;
+        height: 30px;
+        margin: 0 4px;
+      }
+
+      .inline-icon {
+        width: 24px;
+        height: 24px;
+
+        @include tablet {
+          width: 18px;
+          height: 18px;
+        }
+        @include mobile {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+}
+
+// Skills section title
+.skills-header-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-color);
+  opacity: 0.65;
+  margin-bottom: 2rem;
+}
+
+// Tag clouds grid
+.skills-tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  max-width: 1000px;
+
+  @include mobile {
+    gap: 0.75rem;
+  }
+
+  .skill-pill {
+    padding: 0.8rem 1.8rem;
+    border-radius: 40px;
+    border: 2px solid var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+
+    @include tablet {
+      font-size: 1.1rem;
+      padding: 0.6rem 1.4rem;
+    }
+    @include mobile {
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+    }
+
+    &:hover {
+      background-color: var(--text-color);
+      color: var(--bg-color);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    // High contrast black background pills from screenshot
+    &.filled {
+      background-color: var(--text-color);
+      color: var(--bg-color);
+
+      &:hover {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+    }
+
+    // Ampersand circle pill
+    &.ampersand {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 2rem;
+      padding: 0;
+
+      @include tablet {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+      }
+      @include mobile {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

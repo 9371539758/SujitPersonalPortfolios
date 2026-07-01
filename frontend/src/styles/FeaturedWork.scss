@@ -1,0 +1,327 @@
+@import './variables.scss';
+
+.work-section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+// Section Title
+.work-section-title {
+  font-size: 8rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  line-height: 0.95;
+  margin-bottom: 3rem;
+
+  @include tablet {
+    font-size: 5rem;
+  }
+  @include mobile {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+}
+
+// Looping Ticker
+.ticker-tape-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  background-color: var(--accent-purple);
+  padding: 0.5rem 0;
+  margin-bottom: 3.5rem;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 4px 15px rgba(130, 87, 229, 0.3);
+
+  .ticker-tape-track {
+    display: flex;
+    width: max-content;
+  }
+
+  .ticker-tape-list {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 0 1.5rem;
+  }
+
+  .ticker-item {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+
+    &::before {
+      content: "◆";
+      color: #ffffff;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// Case Studies Main Grid
+.case-studies-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+// Card base setup
+.case-study-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid var(--text-color);
+  display: flex;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-lg);
+
+  &:hover {
+    transform: translateY(-8px);
+  }
+
+  // Card Content & Details styling
+  .card-details {
+    flex: 1.1;
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet {
+      padding: 2rem;
+    }
+
+    .meta-tags {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+
+    .card-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 1.5rem 0 2.5rem 0;
+
+      @include tablet {
+        font-size: 2rem;
+      }
+      @include mobile {
+        font-size: 1.5rem;
+        margin: 1rem 0 1.5rem 0;
+      }
+    }
+
+    .card-action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .btn-action {
+        padding: 0.75rem 1.8rem;
+        border-radius: 40px;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        border: 1.5px solid currentColor;
+        transition: var(--transition-smooth);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:hover {
+          background-color: var(--text-color);
+          color: var(--bg-color);
+          border-color: var(--text-color);
+        }
+
+        &.btn-sound {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-color: transparent;
+          color: inherit;
+          backdrop-filter: blur(5px);
+          
+          &:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+          }
+        }
+      }
+    }
+  }
+
+  .card-visual {
+    flex: 0.9;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 450px;
+
+    @include tablet {
+      min-height: 350px;
+    }
+
+    .mockup-wrapper {
+      width: 75%;
+      height: 80%;
+      border-radius: var(--radius-md);
+      border: 3px solid var(--text-color);
+      background-color: var(--toggle-bg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::after {
+        content: "Interactive Mockup";
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--text-color);
+        opacity: 0.65;
+      }
+    }
+  }
+
+  // --- Specific Layout Styles ---
+  
+  // Case Study 1: Large full-width Purple Diagonal Stripe Theme
+  &.cs-large {
+    flex-direction: column;
+
+    .card-visual {
+      background-color: #5d259c;
+      // Stripe overlay
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05) 15px,
+        rgba(0, 0, 0, 0.05) 15px,
+        rgba(0, 0, 0, 0.05) 30px
+      );
+      min-height: 500px;
+      padding: 3rem 0;
+
+      .mockup-wrapper {
+        width: 320px;
+        height: 480px;
+        transform: rotate(10deg);
+        transition: var(--transition-smooth);
+
+        @include mobile {
+          width: 200px;
+          height: 320px;
+        }
+
+        &:hover {
+          transform: rotate(0deg) scale(1.05);
+        }
+      }
+    }
+  }
+
+  // Case Study 2: Yellow Theme
+  &.cs-yellow {
+    background-color: var(--card-bg-yellow);
+    color: #111111;
+
+    .card-details {
+      .btn-action:hover {
+        background-color: #111111;
+        color: #ffffff;
+        border-color: #111111;
+      }
+    }
+
+    .card-visual {
+      background-color: #ffd44d;
+      
+      .mockup-wrapper {
+        width: 250px;
+        height: 380px;
+        transform: translateY(30px);
+        transition: var(--transition-smooth);
+
+        @include mobile {
+          width: 160px;
+          height: 250px;
+        }
+
+        &:hover {
+          transform: translateY(10px) scale(1.05);
+        }
+      }
+    }
+  }
+
+  // Case Study 3: Green Theme
+  &.cs-green {
+    background-color: var(--card-bg-green);
+    color: #ffffff;
+
+    .card-details {
+      .btn-action:hover {
+        background-color: #ffffff;
+        color: #073a27;
+        border-color: #ffffff;
+      }
+    }
+
+    .card-visual {
+      background-color: #052418;
+
+      .mockup-wrapper {
+        width: 85%;
+        height: 75%;
+        transform: translateY(40px) rotate(-3deg);
+        transition: var(--transition-smooth);
+
+        @include mobile {
+          width: 90%;
+          height: 70%;
+        }
+
+        &:hover {
+          transform: translateY(15px) rotate(0deg) scale(1.03);
+        }
+      }
+    }
+  }
+}
+
+// Double Row Split Grid for yellow & green cards
+.case-studies-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+  
+  .case-study-card {
+    flex-direction: column;
+    height: 100%;
+  }
+}

@@ -1,0 +1,364 @@
+@import './variables.scss';
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 0 60px 0;
+  position: relative;
+  overflow: hidden;
+
+  @include mobile {
+    padding-top: 100px;
+  }
+}
+
+// Typographic Layout
+.hero-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 4rem;
+
+  .line-creative {
+    font-size: 8rem;
+    font-weight: 800;
+    text-transform: lowercase;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    font-family: var(--font-display);
+    
+    // Premium Dot Matrix texture fill inside the text!
+    background-image: radial-gradient(circle, var(--text-color) 42%, transparent 48%);
+    background-size: 10px 10px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+
+    @include tablet {
+      font-size: 6rem;
+      background-size: 8px 8px;
+    }
+    @include mobile {
+      font-size: 3.8rem;
+      background-size: 6px 6px;
+    }
+  }
+
+  .line-product {
+    font-size: 9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.95;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: -0.02em;
+
+    @include tablet {
+      font-size: 6.5rem;
+    }
+    @include mobile {
+      font-size: 4rem;
+    }
+
+    // Toggle switch inside the "O" of PRODUCT
+    .o-toggle-switch {
+      width: 140px;
+      height: 75px;
+      border-radius: 50px;
+      background-color: #d12229; // Red background from screen
+      border: 3px solid var(--text-color);
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+      margin: 0 10px;
+      box-shadow: inset 0 4px 10px rgba(0,0,0,0.3);
+      transition: var(--transition-smooth);
+
+      @include tablet {
+        width: 100px;
+        height: 55px;
+        margin: 0 5px;
+      }
+      @include mobile {
+        width: 70px;
+        height: 38px;
+        border-width: 2px;
+      }
+
+      .switch-knob {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 2px solid var(--text-color);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+        position: absolute;
+        left: 5px;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+        @include tablet {
+          width: 42px;
+          height: 42px;
+        }
+        @include mobile {
+          width: 28px;
+          height: 28px;
+          left: 3px;
+        }
+      }
+
+      &.active .switch-knob {
+        transform: translateX(65px);
+        @include tablet {
+          transform: translateX(45px);
+        }
+        @include mobile {
+          transform: translateX(33px);
+        }
+      }
+    }
+  }
+
+  .line-designer {
+    font-size: 9.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.9;
+    color: var(--text-color);
+    letter-spacing: 0.04em;
+    position: relative;
+
+    @include tablet {
+      font-size: 7rem;
+    }
+    @include mobile {
+      font-size: 4.2rem;
+    }
+
+    // Mini UI icons floating near letters
+    .mac-finder-icon {
+      position: absolute;
+      bottom: 10px;
+      right: -80px;
+      width: 60px;
+      height: 60px;
+      animation: float 4s ease-in-out infinite;
+
+      @include tablet {
+        width: 40px;
+        height: 40px;
+        right: -50px;
+      }
+      @include mobile {
+        width: 25px;
+        height: 25px;
+        right: -30px;
+        bottom: 5px;
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(8deg); }
+}
+
+// Spinning scroll text badge
+.spinning-badge-container {
+  position: absolute;
+  top: 15%;
+  left: 45%;
+  z-index: 10;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mobile {
+    display: none; // Hide on tiny screens to avoid clutter
+  }
+
+  .spinning-svg {
+    width: 100%;
+    height: 100%;
+    animation: rotate-badge 15s linear infinite;
+
+    path {
+      fill: none;
+    }
+
+    text {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      fill: var(--text-color);
+      text-transform: uppercase;
+    }
+  }
+
+  .badge-center-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+  }
+}
+
+@keyframes rotate-badge {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// Card overlay at top right in screenshot 1
+.hero-card-widget {
+  position: absolute;
+  top: 18%;
+  right: 10%;
+  width: 260px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.8rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 2;
+
+  @include tablet {
+    display: none; // Hide on medium sizes to fit text
+  }
+
+  .widget-img {
+    width: 100%;
+    height: 120px;
+    border-radius: var(--radius-sm);
+    background-color: #ffd6b3;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-color);
+
+    &::after {
+      content: "Design Visual";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: #ff4d00;
+      font-size: 0.85rem;
+    }
+  }
+
+  .widget-caption {
+    font-size: 0.72rem;
+    color: var(--text-color);
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+}
+
+// Sub captions
+.hero-sub-caption {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .hindi-title {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+
+    @include mobile {
+      font-size: 0.85rem;
+    }
+  }
+
+  .partner-title {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.5;
+    margin-top: 2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #00cc66; // Green dot
+      display: inline-block;
+    }
+  }
+}
+
+// Infinite Brands Marquee
+.marquee-container {
+  margin-top: 3.5rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.8rem 0;
+  background-color: var(--bg-color);
+
+  // Apply Gooey logic to children if desired using SVG filter
+  filter: url("#gooey-effect");
+  
+  .marquee-track {
+    display: flex;
+    width: max-content;
+  }
+
+  .marquee-list {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    padding: 0 3rem;
+  }
+
+  .brand-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    opacity: 0.3;
+    transition: var(--transition-smooth);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+      color: var(--accent-color);
+      transform: scale(1.15);
+      text-shadow: 0 0 10px rgba(255, 77, 0, 0.2);
+    }
+  }
+}
