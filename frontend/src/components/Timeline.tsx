@@ -12,54 +12,48 @@ interface TimelineItem {
   optimizations: string[];
 }
 const timelineData: TimelineItem[] = [
-  {
-    year: '2022 - 2024',
-    project: 'Talent Linker',
-    liveLink: 'https://talentlinker.example.com',
-    problemStatement: 'Recruitment screening and pipeline management suffered from high candidate drop-offs, slow interview scheduling loops, and fragmented communications on mobile and tablet platforms.',
-    solutions: [
-      'Engineered an interactive Candidate screening pipeline with automated email/SMS status triggers.',
-      'Configured calendar sync capabilities directly bridging candidate calendars to recruiter booking availability.',
-      'Devised automated resume parsing modules extracting candidate skills matching targeted profiles.'
-    ],
-    optimizations: [
-      'Accelerated average recruitment loops by 45% (from weeks to days).',
-      'Boosted candidate response rate to schedule requests by 65%.',
-      'Successfully processed and structured over 50,000 active applications.'
-    ]
-  },
-  {
-    year: '2023',
-    project: 'DEET Website Revamp',
-    liveLink: 'https://deet.telangana.gov.in',
-    problemStatement: 'The government employment exchange portal was difficult to navigate, suffered from sluggish load times on low-bandwidth cellular networks, and failed accessibility guidelines (WCAG 2.1) for rural applicants.',
-    solutions: [
-      'Architected a lightning-fast responsive frontend layer designed for low-data mobile coverage.',
-      'Implemented screen-reader controls, keyboard accessibility modes, and text translation features.',
-      'Simplified job filter forms down to a singular, robust natural-language search query input.'
-    ],
-    optimizations: [
-      'Empowered 1M+ active monthly job seekers across rural Telangana state.',
-      'Lifted core Google Lighthouse Accessibility and Performance score from 34 to 94.',
-      'Integrated unified databases syncing job seekers to active regional job fairs in under 1s.'
-    ]
-  },
-  {
-    year: '2023',
-    project: 'AI Resume Builder',
-    liveLink: 'https://workruit.com/resume-builder',
-    problemStatement: 'Applicants struggled to write impactful bullet points and format resume sections in alignment with automated Applicant Tracking System (ATS) parsing rules, resulting in low interview call rates.',
-    solutions: [
-      'Formulated an interactive score grading card analyzing formatting, grammar, and sentence structure.',
-      'Programmed custom scoring algorithms evaluating resume strengths on a scale of 0 to 100.',
-      'Developed a real-time AI suggestions sidebar that offers contextual phrasing options on active lines.'
-    ],
-    optimizations: [
-      'Delivered a 12% click-through rate for the AI suggestions engine, indicating high user utility.',
-      'Helped 500,000+ graduates construct high-fidelity ATS-optimized resume files.',
-      'Boosted interview callback conversion rates for premium users by 35%.'
-    ]
-  },
+ {
+  year: '2026',
+  project: 'BookSwap',
+  liveLink: 'https://book-swap0.vercel.app/',
+  problemStatement:
+    'Students and readers often have unused books while others struggle to find affordable copies. Existing marketplaces focus on buying and selling rather than enabling simple local book exchanges between users.',
+
+  solutions: [
+    'Built a full-stack book exchange platform using React, Node.js, Express, and MongoDB.',
+    'Implemented secure JWT authentication with protected routes and user-specific dashboards.',
+    'Developed book listing management with image uploads, categories, conditions, and availability status.',
+    'Created advanced search and filtering to quickly discover books by title, author, or category.',
+    'Integrated responsive UI optimized for desktop and mobile devices.'
+  ],
+
+  optimizations: [
+    'Designed a scalable REST API architecture supporting efficient CRUD operations and authentication.',
+    'Reduced unnecessary database requests through optimized queries and structured API endpoints.',
+    'Implemented reusable React components for improved maintainability and faster feature development.',
+    'Built with deployment-ready architecture using Vercel (Frontend) and Render (Backend).'
+  ]
+},
+ 
+ {
+  year: '2026',
+  project: 'Jarvis AI',
+  liveLink: 'https://your-jarvis-ai.vercel.app',
+  problemStatement: 'Users often switch between multiple websites and applications for everyday tasks such as searching the web, opening websites, checking the weather, and interacting with AI assistants, leading to a fragmented browsing experience.',
+
+  solutions: [
+    'Developed a browser-based AI assistant using JavaScript with voice recognition and speech synthesis capabilities.',
+    'Implemented natural language command processing to perform web searches, open websites, answer general queries, and execute browser-based actions.',
+    'Integrated real-time APIs to provide information such as weather, time, news, and other contextual responses.',
+    'Designed an interactive conversational interface with continuous voice interaction for a hands-free user experience.'
+  ],
+
+  optimizations: [
+    'Optimized command processing to deliver fast responses with minimal interaction latency.',
+    'Built a modular architecture enabling seamless integration of additional AI capabilities and external APIs.',
+    'Implemented responsive design ensuring consistent performance across desktop and mobile browsers.'
+  ]
+},
   {
     year: '2022',
     project: 'Workruit Landing Page',
@@ -92,38 +86,8 @@ const timelineData: TimelineItem[] = [
       'Re-engineered rendering logic to run transitions at a stable 60 FPS on mid-range devices.'
     ]
   },
-  {
-    year: '2021',
-    project: 'Campus Portal (Online College Placement)',
-    liveLink: 'https://workruit.com/campus',
-    problemStatement: 'University placement coordinates, students, and corporate recruiters communicated through disconnected email chains, leading to missed interviews, mismatched criteria, and scheduling chaos.',
-    solutions: [
-      'Constructed a centralized placement cockpit consolidating student profiles, company criteria, and test scores.',
-      'Integrated interactive timelines showcasing placements rounds, calendar agendas, and direct meeting links.',
-      'Devised verification systems allowing college admins to batch-approve student records in single actions.'
-    ],
-    optimizations: [
-      'Placed 85% of eligible college candidates within the first drive phase.',
-      'Trimmed corporate scheduling times by 80% through automated recruiter calendars.',
-      'Digitized profile audits, removing weeks of manual verification paperwork.'
-    ]
-  },
-  {
-    year: '2020',
-    project: 'SBI Augmented Payment (Augmented Reality)',
-    liveLink: 'https://sbi.co.in',
-    problemStatement: 'Standard bank mobile payment screens felt tedious and did not appeal to the emerging demographic of younger digital-native consumers requesting interactive experiences.',
-    solutions: [
-      'Designed a prototype AR overlay demonstrating interactive contactless transactions via camera views.',
-      'Engineered real-time graphics depicting banking trends and expenditure tracking in floating 3D frames.',
-      'Developed low-latency image detection systems pairing QR scans to instant invoice popups.'
-    ],
-    optimizations: [
-      'Secured executive validation for NEXT-GEN payment concepts within State Bank of India divisions.',
-      'Paved paths for subsequent AR exploration and digital payment innovations inside banking applications.',
-      'Reduced payment confirmation processing delay to a sub-500ms API callback threshold.'
-    ]
-  }
+
+ 
 ];
 export const Timeline: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

@@ -1,27 +1,50 @@
 @import './variables.scss';
 
 .work-section {
-  padding: 100px 0;
-  border-bottom: 1px solid var(--border-color);
   position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+  
+  // Pinned container during horizontal scroll
+  .pin-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 80px 0;
+    
+    @include tablet {
+      padding: 60px 0;
+    }
+    
+    @include mobile {
+      min-height: auto;
+      height: auto;
+      padding: 50px 0;
+    }
+  }
 }
 
 // Section Title
 .work-section-title {
-  font-size: 8rem;
+  font-size: 7rem;
   font-weight: 700;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--text-color);
   line-height: 0.95;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+  padding: 0 4rem;
 
   @include tablet {
     font-size: 5rem;
+    padding: 0 2rem;
   }
   @include mobile {
     font-size: 3rem;
     margin-bottom: 2rem;
+    padding: 0 1rem;
   }
 }
 
@@ -36,9 +59,10 @@
   overflow: hidden;
   background-color: var(--accent-purple);
   padding: 0.5rem 0;
-  margin-bottom: 3.5rem;
+  margin-bottom: 4rem;
   transform: rotate(-1.5deg);
   box-shadow: 0 4px 15px rgba(130, 87, 229, 0.3);
+  z-index: 5;
 
   .ticker-tape-track {
     display: flex;
@@ -72,92 +96,217 @@
   }
 }
 
-// Case Studies Main Grid
-.case-studies-grid {
+// Horizontal Scroll Wrapper
+.horizontal-scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
+  align-items: center;
 }
 
-// Card base setup
-.case-study-card {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 2px solid var(--text-color);
+// Horizontal Track containing the cards
+.horizontal-scroll-track {
   display: flex;
-  transition: var(--transition-smooth);
+  gap: 3.5rem;
+  padding: 0 4rem;
+  will-change: transform;
+
+  @include tablet {
+    padding: 0 2rem;
+    gap: 2.5rem;
+  }
+
+  @include mobile {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+}
+
+// Premium Horizontal Cards
+.horizontal-card {
+  width: 65vw;
+  max-width: 800px;
+  height: 50vh;
+  max-height: 480px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--text-color);
+  background-color: var(--bg-color);
   box-shadow: var(--shadow-lg);
+  display: flex;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  position: relative;
 
   &:hover {
     transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
 
-  // Card Content & Details styling
+  @include tablet {
+    width: 75vw;
+    height: 48vh;
+  }
+
+  @include mobile {
+    width: 85vw;
+    height: auto;
+    min-height: 420px;
+    flex-direction: column;
+  }
+
+  // Visual side of the card
+  .card-visual {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid var(--text-color);
+    height: 100%;
+    
+    // Background fallbacks defined in theme helpers
+    background-size: cover;
+    background-position: center;
+
+    @include mobile {
+      height: 180px;
+      width: 100%;
+      border-right: none;
+      border-bottom: 2px solid var(--text-color);
+      flex: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 100%);
+    }
+
+    .card-num {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.4);
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+      line-height: 1;
+      z-index: 2;
+      
+      @include mobile {
+        top: 1rem;
+        left: 1rem;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  // Details side of the card
   .card-details {
     flex: 1.1;
-    padding: 3.5rem;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100%;
 
     @include tablet {
       padding: 2rem;
     }
 
+    @include mobile {
+      padding: 1.2rem;
+      flex: 1;
+      justify-content: flex-start;
+      gap: 0.75rem;
+    }
+
     .meta-tags {
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      opacity: 0.7;
+      opacity: 0.6;
     }
 
     .card-title {
-      font-size: 2.8rem;
-      font-weight: 600;
+      font-size: 2.2rem;
+      font-weight: 700;
       line-height: 1.25;
-      margin: 1.5rem 0 2.5rem 0;
+      color: var(--text-color);
+      margin: 1rem 0;
 
       @include tablet {
-        font-size: 2rem;
+        font-size: 1.7rem;
       }
+
       @include mobile {
-        font-size: 1.5rem;
-        margin: 1rem 0 1.5rem 0;
+        font-size: 1.25rem;
+        margin: 0.25rem 0;
+      }
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      line-height: 1.45;
+      opacity: 0.8;
+      color: var(--text-color);
+
+      @include mobile {
+        font-size: 0.8rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
     }
 
     .card-action-bar {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+
+      @include mobile {
+        margin-top: 1rem;
+      }
 
       .btn-action {
-        padding: 0.75rem 1.8rem;
+        padding: 0.65rem 1.4rem;
         border-radius: 40px;
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         text-transform: uppercase;
-        border: 1.5px solid currentColor;
+        border: 1.5px solid var(--text-color);
         transition: var(--transition-smooth);
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.4rem;
 
-        &:hover {
-          background-color: var(--text-color);
-          color: var(--bg-color);
-          border-color: var(--text-color);
+        @include mobile {
+          padding: 0.45rem 1rem;
+          font-size: 0.7rem;
         }
 
-        &.btn-sound {
-          background-color: rgba(255, 255, 255, 0.1);
-          border-color: transparent;
-          color: inherit;
-          backdrop-filter: blur(5px);
-          
+        &.btn-primary {
+          background-color: var(--text-color);
+          color: var(--bg-color);
+
+          &:hover {
+            background-color: transparent;
+            color: var(--text-color);
+          }
+        }
+
+        &.btn-secondary {
+          background-color: transparent;
+          color: var(--text-color);
+
           &:hover {
             background-color: var(--text-color);
             color: var(--bg-color);
@@ -167,161 +316,21 @@
     }
   }
 
-  .card-visual {
-    flex: 0.9;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 450px;
-
-    @include tablet {
-      min-height: 350px;
-    }
-
-    .mockup-wrapper {
-      width: 75%;
-      height: 80%;
-      border-radius: var(--radius-md);
-      border: 3px solid var(--text-color);
-      background-color: var(--toggle-bg);
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &::after {
-        content: "Interactive Mockup";
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 0.85rem;
-        color: var(--text-color);
-        opacity: 0.65;
-      }
-    }
+  // Dynamic Card Background Themes
+  &.theme-1 {
+    .card-visual { background: linear-gradient(135deg, #8e44ad, #2c3e50); }
   }
-
-  // --- Specific Layout Styles ---
-  
-  // Case Study 1: Large full-width Purple Diagonal Stripe Theme
-  &.cs-large {
-    flex-direction: column;
-
-    .card-visual {
-      background-color: #5d259c;
-      // Stripe overlay
-      background-image: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.05),
-        rgba(255, 255, 255, 0.05) 15px,
-        rgba(0, 0, 0, 0.05) 15px,
-        rgba(0, 0, 0, 0.05) 30px
-      );
-      min-height: 500px;
-      padding: 3rem 0;
-
-      .mockup-wrapper {
-        width: 320px;
-        height: 480px;
-        transform: rotate(10deg);
-        transition: var(--transition-smooth);
-
-        @include mobile {
-          width: 200px;
-          height: 320px;
-        }
-
-        &:hover {
-          transform: rotate(0deg) scale(1.05);
-        }
-      }
-    }
+  &.theme-2 {
+    .card-visual { background: linear-gradient(135deg, #f1c40f, #d35400); }
   }
-
-  // Case Study 2: Yellow Theme
-  &.cs-yellow {
-    background-color: var(--card-bg-yellow);
-    color: #111111;
-
-    .card-details {
-      .btn-action:hover {
-        background-color: #111111;
-        color: #ffffff;
-        border-color: #111111;
-      }
-    }
-
-    .card-visual {
-      background-color: #ffd44d;
-      
-      .mockup-wrapper {
-        width: 250px;
-        height: 380px;
-        transform: translateY(30px);
-        transition: var(--transition-smooth);
-
-        @include mobile {
-          width: 160px;
-          height: 250px;
-        }
-
-        &:hover {
-          transform: translateY(10px) scale(1.05);
-        }
-      }
-    }
+  &.theme-3 {
+    .card-visual { background: linear-gradient(135deg, #2ecc71, #16a085); }
   }
-
-  // Case Study 3: Green Theme
-  &.cs-green {
-    background-color: var(--card-bg-green);
-    color: #ffffff;
-
-    .card-details {
-      .btn-action:hover {
-        background-color: #ffffff;
-        color: #073a27;
-        border-color: #ffffff;
-      }
-    }
-
-    .card-visual {
-      background-color: #052418;
-
-      .mockup-wrapper {
-        width: 85%;
-        height: 75%;
-        transform: translateY(40px) rotate(-3deg);
-        transition: var(--transition-smooth);
-
-        @include mobile {
-          width: 90%;
-          height: 70%;
-        }
-
-        &:hover {
-          transform: translateY(15px) rotate(0deg) scale(1.03);
-        }
-      }
-    }
+  &.theme-4 {
+    .card-visual { background: linear-gradient(135deg, #e74c3c, #962d22); }
+  }
+  &.theme-5 {
+    .card-visual { background: linear-gradient(135deg, #3498db, #2980b9); }
   }
 }
 
-// Double Row Split Grid for yellow & green cards
-.case-studies-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-
-  @include tablet {
-    grid-template-columns: 1fr;
-  }
-  
-  .case-study-card {
-    flex-direction: column;
-    height: 100%;
-  }
-}

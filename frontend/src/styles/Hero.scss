@@ -328,10 +328,17 @@
 
   // Apply Gooey logic to children if desired using SVG filter
   filter: url("#gooey-effect");
+
+  &:hover {
+    .marquee-track {
+      animation-play-state: paused;
+    }
+  }
   
   .marquee-track {
     display: flex;
     width: max-content;
+    animation: marquee-scroll 32s linear infinite;
   }
 
   .marquee-list {
@@ -360,5 +367,14 @@
       transform: scale(1.15);
       text-shadow: 0 0 10px rgba(255, 77, 0, 0.2);
     }
+  }
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.3333%, 0, 0);
   }
 }
