@@ -32,7 +32,7 @@ const projectsData: ProjectCard[] = [
   num: '02',
   year: '2026',
   category: 'System Design',
-  title: 'BookSwap – Full-Stack Book Exchange Platform',
+  title: ' Full-Stack Book Exchange Platform',
   desc: 'Designed a scalable book exchange platform featuring authentication, image uploads, wishlist management, ownership tracking, secure REST APIs, and modular backend architecture following production-ready system design principles.',
   themeClass: 'theme-2',
   liveLink: '#'
