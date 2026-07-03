@@ -68,7 +68,7 @@ export const Header: React.FC = () => {
 
         <div className="header-actions">
           <a 
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/in/sujit-gore-16548b411/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="linkedin-link"

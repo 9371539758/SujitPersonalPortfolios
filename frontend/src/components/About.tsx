@@ -24,26 +24,26 @@ export const About: React.FC = () => {
         ease: 'power3.out',
       });
 
-      // Animate skills pills sequentially
-      const pills = tagContainerRef.current?.querySelectorAll('.skill-pill');
-      if (pills) {
-        gsap.from(pills, {
-          scrollTrigger: {
-            trigger: tagContainerRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-          scale: 0.8,
-          opacity: 0,
-          y: 30,
-          stagger: {
-            each: 0.05,
-            from: 'start',
-          },
-          duration: 0.8,
-          ease: 'back.out(1.5)',
-        });
-      }
+      // // Animate skills pills sequentially
+      // const pills = tagContainerRef.current?.querySelectorAll('.skill-pill');
+      // if (pills) {
+      //   gsap.from(pills, {
+      //     scrollTrigger: {
+      //       trigger: tagContainerRef.current,
+      //       start: 'top 85%',
+      //       toggleActions: 'play none none none',
+      //     },
+      //     scale: 0.8,
+      //     opacity: 0,
+      //     y: 30,
+      //     stagger: {
+      //       each: 0.05,
+      //       from: 'start',
+      //     },
+      //     duration: 0.8,
+      //     ease: 'back.out(1.5)',
+      //   });
+      // }
 
       // Parallax effect on the spinning scroll badge
       gsap.to('.about-section .spinning-badge-container', {
@@ -108,9 +108,9 @@ export const About: React.FC = () => {
             {/* Peace Sign emoji or SVG */}
             <span style={{ fontSize: '1.6rem', lineHeight: 1 }}>✌️</span>
           </span>
-          , practicing design since 
-          <span className="inline-years">2020</span> 
-          focused on designing 
+          , focused on learning,
+          <span className="inline-years">2024</span> 
+          creating,
           <span className="inline-icon-wrapper">
             {/* Cursor icon */}
             <svg className="inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -118,7 +118,7 @@ export const About: React.FC = () => {
               <path d="m13 13 6 6"/>
             </svg>
           </span>
-          and building digital product 
+        experimenting  and failing 
           <span className="inline-icon-wrapper">
             {/* Globe icon */}
             <svg className="inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -127,7 +127,7 @@ export const About: React.FC = () => {
               <path d="M2 12h20"/>
             </svg>
           </span>
-          , brands 
+          ,  improving, and crafting
           <span className="inline-icon-wrapper">
             {/* At-sign icon */}
             <svg className="inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -135,7 +135,7 @@ export const About: React.FC = () => {
               <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>
             </svg>
           </span>
-          and experiences 
+               impactful digital products 
           <span className="inline-icon-wrapper">
             {/* Sparkles icon */}
             <svg className="inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -151,12 +151,12 @@ export const About: React.FC = () => {
         
         <div ref={tagContainerRef} className="skills-tags-cloud">
           {/* Slanted or rotated custom styled tag pills */}
-          <span className="skill-pill" style={{ transform: 'rotate(-4deg)' }}>Empathy</span>
+          <span className="skill-pill" style={{ transform: 'rotate(-4deg)' }}>JavaScript</span>
           <span className="skill-pill filled" style={{ transform: 'rotate(2deg)' }}>User Research</span>
           <span className="skill-pill" style={{ transform: 'rotate(-1.5deg)' }}>Wireframing</span>
           <span className="skill-pill" style={{ transform: 'rotate(3deg)' }}>Prototyping</span>
           <span className="skill-pill" style={{ transform: 'rotate(-2deg)' }}>User Flow</span>
-          <span className="skill-pill" style={{ transform: 'rotate(5deg)' }}>Collaboration</span>
+          <span className="skill-pill" style={{ transform: 'rotate(5deg)' }}>GEN AI</span>
           <span className="skill-pill ampersand">&</span>
           <span className="skill-pill" style={{ transform: 'rotate(-3deg)', fontSize: '1rem', fontStyle: 'italic', fontFamily: 'serif' }}>Visual & UI</span>
           <span className="skill-pill" style={{ transform: 'rotate(1deg)' }}>Information Design</span>

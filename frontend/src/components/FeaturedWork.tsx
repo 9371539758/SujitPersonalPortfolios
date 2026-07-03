@@ -17,46 +17,37 @@ interface ProjectCard {
 }
 
 const projectsData: ProjectCard[] = [
-  {
-    id: 'talent-linker',
-    num: '01',
-    year: '2022 - 2024',
-    category: 'Product Design',
-    title: 'Talent Linker: Streamlined Recruitment Pipeline',
-    desc: 'An automated candidate screening and scheduling interface accelerating hiring pipelines. Seamlessly syncs recruiter availability and evaluates resumes with visual grading cards.',
-    themeClass: 'theme-1',
-    liveLink: '#'
-  },
-  {
-    id: 'ai-builder',
-    num: '02',
-    year: '2023',
-    category: 'AI & Interactive',
-    title: 'ATS-Optimized AI Resume Reviewer',
-    desc: 'An interactive grading platform scoring formatting, grammar, and keywords. Provides real-time contextual improvements and lists weak verbs or formatting concerns dynamically.',
-    themeClass: 'theme-2',
-    liveLink: '#'
-  },
-  {
-    id: 'deet-jobs',
-    num: '03',
-    year: '2023',
-    category: 'Web Accessibility',
-    title: 'Telangana DEET Government Portal',
-    desc: 'Re-architecting region-scale employment platforms for low-bandwidth cellular devices. Fully WCAG 2.1 accessible, translating jobs for 1M+ monthly active rural applicants.',
-    themeClass: 'theme-3',
-    liveLink: '#'
-  },
-  // {
-  //   id: 'workruit-web',
-  //   num: '04',
-  //   year: '2022',
-  //   category: 'Interaction Design',
-  //   title: 'Workruit High-Performance Landing Hub',
-  //   desc: 'Optimizing legacy web performance through lightweight vector illustrations, smooth ScrollTriggers, and reactive animations, decreasing bounce rates by 28%.',
-  //   themeClass: 'theme-4',
-  //   liveLink: '#'
-  // },
+ {
+  id: 'genai-rag',
+  num: '01',
+  year: '2026',
+  category: 'Generative AI',
+  title: 'Multi-Document RAG Knowledge Assistant',
+  desc: 'Built an AI assistant that indexes PDFs and documents using vector embeddings and graph-based retrieval. Delivers context-aware answers with source citations, conversation memory, and fast semantic search across uploaded files.',
+  themeClass: 'theme-1',
+  liveLink: '#'
+},
+{
+  id: 'bookswap',
+  num: '02',
+  year: '2026',
+  category: 'System Design',
+  title: 'BookSwap – Full-Stack Book Exchange Platform',
+  desc: 'Designed a scalable book exchange platform featuring authentication, image uploads, wishlist management, ownership tracking, secure REST APIs, and modular backend architecture following production-ready system design principles.',
+  themeClass: 'theme-2',
+  liveLink: '#'
+},
+{
+  id: 'ai-agents',
+  num: '03',
+  year: '2026',
+  category: 'AI Engineering',
+  title: 'Multi-LLM AI Agent Platform',
+  desc: 'Engineered an AI platform integrating multiple LLM providers with intelligent model routing, streaming responses, prompt orchestration, conversation memory, and reusable TypeScript architecture for building production AI applications.',
+  themeClass: 'theme-3',
+  liveLink: '#'
+},
+ 
 
 ];
 
